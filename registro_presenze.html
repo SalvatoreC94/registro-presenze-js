@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro Presenze Corso Java</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Registro Presenze Corso Java </h1>
+
+        <!-- Form per inserire una nuova data e ore di presenza -->
+        <form id="form-registro" class="mb-4">
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="data" class="form-label">Data</label>
+                    <input type="date" id="data" class="form-control" required>
+                </div>
+                <div class="col-md-4">
+                    <label for="ore" class="form-label">Ore Frequentate</label>
+                    <input type="number" id="ore" class="form-control" min="0" max="8" required>
+                </div>
+                <div class="col-md-4 d-flex align-items-end">
+                    <button type="submit" class="btn btn-primary w-100">Aggiungi</button>
+                </div>
+            </div>
+        </form>
+
+        <!-- Tabella per visualizzare i dati -->
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Ore Frequentate</th>
+                </tr>
+            </thead>
+            <tbody id="registro-body">
+                <!-- Righe generate dinamicamente -->
+            </tbody>
+        </table>
+
+        <!-- Riepilogo -->
+        <div class="mt-4">
+            <h3>Riepilogo</h3>
+            <p id="totali"></p>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Collega il file JavaScript -->
+    <script src="registro_presenze.js"></script>
+</body>
+
+</html>
