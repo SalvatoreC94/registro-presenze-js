@@ -13,22 +13,28 @@
     <div class="container mt-5">
         <h1 class="text-center mb-4">Registro Presenze Corso Java </h1>
 
-        <!-- Form per inserire una nuova data e ore di presenza -->
+        <!-- Form per inserire una nuova data, ore e minuti di presenza -->
         <form id="form-registro" class="mb-4">
-            <div class="row">
-                <div class="col-md-4">
+            <div class="row align-items-end">
+                <div class="col-md-3">
                     <label for="data" class="form-label">Data</label>
                     <input type="date" id="data" class="form-control" required>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <label for="ore" class="form-label">Ore Frequentate</label>
                     <input type="number" id="ore" class="form-control" min="0" max="8" required>
                 </div>
-                <div class="col-md-4 d-flex align-items-end">
+                <div class="col-md-3">
+                    <label for="minuti" class="form-label">Minuti Frequentati</label>
+                    <input type="number" id="minuti" class="form-control" min="0" max="59" required placeholder="Minuti (0-59)">
+                </div>
+                <div class="col-md-3">
                     <button type="submit" class="btn btn-primary w-100">Aggiungi</button>
                 </div>
             </div>
         </form>
+        
+        
 
         <!-- Tabella per visualizzare i dati -->
         <table class="table table-striped">
@@ -49,6 +55,39 @@
             <p id="totali"></p>
         </div>
     </div>
+
+    <!-- Modale per modificare i dati -->
+<div class="modal fade" id="modaleModifica" tabindex="-1" aria-labelledby="modaleModificaLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modaleModificaLabel">Modifica Presenza</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="form-modifica">
+                    <div class="mb-3">
+                        <label for="modificaData" class="form-label">Data (AAAA-MM-GG)</label>
+                        <input type="date" class="form-control" id="modificaData" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="modificaOre" class="form-label">Ore Frequentate</label>
+                        <input type="number" class="form-control" id="modificaOre" min="0" max="8" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="modificaMinuti" class="form-label">Minuti Frequentati</label>
+                        <input type="number" class="form-control" id="modificaMinuti" min="0" max="59" required>
+                    </div>
+                    <input type="hidden" id="indiceModifica">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+                <button type="button" class="btn btn-primary" onclick="salvaModifica()">Salva Modifiche</button>
+            </div>
+        </div>
+    </div>
+</div>
 
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
