@@ -135,17 +135,26 @@ function salvaModifica() {
     const modale = bootstrap.Modal.getInstance(document.getElementById("modaleModifica"));
     modale.hide();
 }
+let indiceCancellazione = null;
 
-// Cancella una data
 function cancellaData(index) {
-    const conferma = confirm("Sei sicuro di voler cancellare questa data?");
-    if (conferma) {
-        registroPresenze.splice(index, 1);
+    indiceCancellazione = index;
+    const modale = new bootstrap.Modal(document.getElementById("modaleConfermaCancellazione"));
+    modale.show();
+}
+
+document.getElementById("btnConfermaCancellazione").addEventListener("click", function () {
+    if (indiceCancellazione !== null) {
+        registroPresenze.splice(indiceCancellazione, 1);
         salvaDati();
         generaTabella();
         aggiornaTotali();
     }
-}
+
+    const modale = bootstrap.Modal.getInstance(document.getElementById("modaleConfermaCancellazione"));
+    modale.hide();
+});
+
 
 // Carica i dati all'avvio
 caricaDati();
