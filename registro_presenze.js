@@ -39,6 +39,12 @@ function aggiornaTotali() {
         Ore Assenti Totali: ${Math.floor(minutiAssentiTotali / 60)}h ${minutiAssentiTotali % 60}m su 72 |
         Percentuale Presenza: ${percentualePresenza}%
     `;
+    if (percentualePresenza < 70) {
+        alert("⚠️ Attenzione! La tua percentuale di presenza è inferiore al 70%.");
+        document.getElementById("totali").style.color = "red";
+    } else {
+        document.getElementById("totali").style.color = "black";
+    }
 }
 
 // Genera la tabella
